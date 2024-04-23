@@ -1,4 +1,4 @@
 {
-    "nombre":"micropagos",
-    "database":"postgres"
+    "nombre_del_proyecto":"micropagos",
+    "data_base":"postgres"
 }
