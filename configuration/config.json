@@ -1,0 +1,48 @@
+{
+    "url_smsgateway": "http://192.168.27.41:8090/sendsms",
+    "utl_portabilidad": "http://192.168.27.41:7000/portabilidad.portabilidadHttpSoap11Endpoint/",
+    "max_message_length": 160,
+    "mobil_regex": "^09\\d{7}$",
+    "raven": [
+        {
+            "name": "pronto",
+            "sendMail": false,
+            "shortNumber": 17800
+        },
+        {
+            "name": "oca",
+            "sendMail": false,
+            "shortNumber": 1730
+        },
+        {
+            "name": "creditel",
+            "sendMail": false,
+            "shortNumber": 4242
+        },
+        {
+            "name": "itau",
+            "sendMail": false,
+            "shortNumber": 1784
+        },
+        {
+            "name": "facilcel",
+            "sendMail": false,
+            "shortNumber": 3031
+        },
+        {
+            "name": "santander",
+            "sendMail": false,
+            "shortNumber": 1320
+        },
+        {
+            "name": "creditosDirectos",
+            "sendMail": false,
+            "shortNumber": 18919
+        },
+        {
+            "name": "firstdata",
+            "sendMail": false,
+            "shortNumber": 2992
+        }
+    ]
+}
