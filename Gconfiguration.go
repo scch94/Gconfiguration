@@ -7,7 +7,6 @@ import (
 	"path/filepath"
 
 	"github.com/scch94/Gconfiguration/constants"
-	"github.com/scch94/Gconfiguration/structs"
 )
 
 // ConfigurationsModel es una interfaz para cualquier modelo de configuración.
@@ -16,13 +15,13 @@ type ConfigurationsModel interface {
 }
 
 // Gconfiguration carga la configuración desde un archivo JSON y devuelve un modelo de configuración.
-func Gconfiguration(configurationName string) (ConfigurationsModel, error) {
+func Gconfiguration(configurationModel ConfigurationsModel) error {
 	fmt.Println("Iniciando Gconfiguration. Versión:", version())
 
 	// Obtener la ruta del ejecutable
 	exePath, err := os.Executable()
 	if err != nil {
-		return nil, fmt.Errorf("error al obtener la ruta del ejecutable: %v", err)
+		return fmt.Errorf("error al obtener la ruta del ejecutable: %v", err)
 	}
 	exeDir := filepath.Dir(exePath)
 
@@ -34,20 +33,19 @@ func Gconfiguration(configurationName string) (ConfigurationsModel, error) {
 	configData, err := os.ReadFile(configFilePath)
 	if err != nil {
 		fmt.Println("error al leer el archivo de configuracion :", err)
-		return nil, fmt.Errorf("error al leer el archivo de configuración: %v", err)
+		return fmt.Errorf("error al leer el archivo de configuración: %v", err)
 	}
 
 	// Decodificar el JSON en la estructura de configuración adecuada
-	var configurationStruct structs.MicropagosConfiguration
-	err = json.Unmarshal(configData, &configurationStruct)
+	//var configurationStruct structs.MicropagosConfiguration
+	err = json.Unmarshal(configData, configurationModel)
 	if err != nil {
-		return nil, fmt.Errorf("el archivo config.json no coincide con la estructura %s, revisa el archivo nuevamente: %v", configurationName, err)
+		return fmt.Errorf("el archivo config.json no coincide con la estructura %s, revisa el archivo nuevamente: %v", configurationModel, err)
 	}
 
-	fmt.Println("Configuración cargada:")
-	fmt.Println("JSON de la configuración:", configurationStruct.ConfigurationString())
-
-	return configurationStruct, nil
+	fmt.Println("acabamos de obtener la configuracion")
+	fmt.Println("este es el valor de la config", configurationModel.ConfigurationString())
+	return nil
 }
 
 // readConfigFile lee el contenido del archivo de configuración.
