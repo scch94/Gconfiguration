@@ -15,7 +15,7 @@ type ConfigurationsModel interface {
 }
 
 // Gconfiguration carga la configuración desde un archivo JSON y devuelve un modelo de configuración.
-func Gconfiguration(configurationModel ConfigurationsModel) error {
+func GetConfig(configurationModel ConfigurationsModel) error {
 	fmt.Println("Iniciando Gconfiguration. Versión:", version())
 
 	// Obtener la ruta del ejecutable
