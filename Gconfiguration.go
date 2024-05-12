@@ -34,7 +34,7 @@ func GetConfig(configurationModel ConfigurationsModel) error {
 
 	// Construir la ruta al archivo de configuración
 	configFilePath := filepath.Join(exeDir, constants.CONFIG_FILE)
-	ins_log.Infof(ctx, "ubication of the configurationfile", configFilePath)
+	ins_log.Infof(ctx, "ubication of the configurationfile %s", configFilePath)
 
 	// Leer el contenido del archivo de configuración
 	configData, err := os.ReadFile(configFilePath)
@@ -52,7 +52,7 @@ func GetConfig(configurationModel ConfigurationsModel) error {
 	}
 
 	ins_log.Info(ctx, "ending to get the configuration")
-	ins_log.Tracef(ctx, "this is the data that we have in the configuration", configurationModel.ConfigurationString())
+	ins_log.Tracef(ctx, "this is the data that we have in the configuration %s", configurationModel.ConfigurationString())
 	return nil
 }
 
