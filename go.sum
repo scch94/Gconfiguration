@@ -1,0 +1,4 @@
+github.com/google/uuid v1.6.0 h1:NIvaJDMOsjHA8n1jAhLSgzrAzy1Hgr+hNrb57e+94F0=
+github.com/google/uuid v1.6.0/go.mod h1:TIyPZe4MgqvfeYDBFedMoGGpEw/LqOeaOT+nhxU+yHo=
+github.com/scch94/ins_log v0.0.0-20240511034327-ce817514df2e h1:vkph/NiXWNWKu3SFhZceLGMT3rZ7vioqe8y07Jt7/1U=
+github.com/scch94/ins_log v0.0.0-20240511034327-ce817514df2e/go.mod h1:Ye7266CglnRW8IHSXFOcGLJqm9sQL98u8UsQbc23Qvs=
