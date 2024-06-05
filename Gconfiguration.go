@@ -7,7 +7,6 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/scch94/Gconfiguration/constants"
 	"github.com/scch94/ins_log"
 )
 
@@ -20,27 +19,20 @@ type ConfigurationsModel interface {
 }
 
 // Gconfiguration carga la configuración desde un archivo JSON y devuelve un modelo de configuración.
-func GetConfig(configurationModel ConfigurationsModel) error {
+func GetConfig(configurationModel ConfigurationsModel, configPath string) error {
 	ins_log.SetService("Gconfiguration")
-	ins_log.Infof(ctx, "starting gconfiguration Versión:", version())
+	ins_log.Infof(ctx, "starting gconfiguration Versión: %s", version())
 
 	// Obtener la ruta del ejecutable
-	exePath, err := os.Executable()
-	if err != nil {
-		ins_log.Fatalf(ctx, "error trying to get the file path  :", err)
-		return fmt.Errorf("error trying to get the file path  : %v", err)
-	}
-	exeDir := filepath.Dir(exePath)
-
-	// Construir la ruta al archivo de configuración
-	configFilePath := filepath.Join(exeDir, constants.CONFIG_FILE)
-	ins_log.Infof(ctx, "ubication of the configurationfile %s", configFilePath)
+	// Construye la ruta completa al archivo de configuración
+	configFilePath := filepath.Join(configPath, "config.json")
+	ins_log.Infof(ctx, "Location of the configuration file: %s", configFilePath)
 
 	// Leer el contenido del archivo de configuración
 	configData, err := os.ReadFile(configFilePath)
 	if err != nil {
-		ins_log.Fatalf(ctx, "problem when we try to reed the configuration file :", err)
-		return fmt.Errorf("problem when we try to reed the configuration file : %v", err)
+		ins_log.Fatalf(ctx, "error reading the configuration file: %v", err)
+		return fmt.Errorf("error reading the configuration file: %v", err)
 	}
 
 	// Decodificar el JSON en la estructura de configuración adecuada
