@@ -19,13 +19,13 @@ type ConfigurationsModel interface {
 }
 
 // Gconfiguration carga la configuración desde un archivo JSON y devuelve un modelo de configuración.
-func GetConfig(configurationModel ConfigurationsModel, configPath string) error {
+func GetConfig(configurationModel ConfigurationsModel, configPath string, fileName string) error {
 	ins_log.SetService("Gconfiguration")
 	ins_log.Infof(ctx, "starting gconfiguration Versión: %s", version())
 
 	// Obtener la ruta del ejecutable
 	// Construye la ruta completa al archivo de configuración
-	configFilePath := filepath.Join(configPath, "config.json")
+	configFilePath := filepath.Join(configPath, fileName)
 	ins_log.Infof(ctx, "Location of the configuration file: %s", configFilePath)
 
 	// Leer el contenido del archivo de configuración
